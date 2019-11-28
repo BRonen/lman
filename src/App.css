@@ -1,0 +1,102 @@
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
+
+html,body,#root {
+  height: 100%;
+}
+
+.app{
+  padding: 1% 1% 1% 1%;
+}
+
+body {
+  background-color: #222;
+  color: #51bb57;
+}
+
+body,input,button {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.Content-box{
+  text-align: center;
+  color: #5b5;
+  background-color: #222;
+  padding-left: 1%;
+  padding-right: 1%;
+  margin-bottom: 5px;
+  padding-top: 5px;
+  border: 2px solid #111;
+}
+
+.Menu{
+  display: grid;
+  padding-bottom: 5px;
+  padding-left: 0%;
+  padding-right: 0%;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.Menu-button{
+  cursor: pointer;
+  font-size: 150%;
+  border-radius:2px;
+  box-shadow: 1px 1px 2px #666;
+  border:1px solid #aaa;
+  background: #222;
+  height: 35px;
+  width: 95%;
+  color: #5b5;
+}
+
+.Big-button{
+  cursor: pointer;
+  font-size: 150%;
+  border-radius:2px;
+  box-shadow: 1px 1px 2px #666;
+  border:1px solid #aaa;
+  margin-left: 10px;
+  margin-bottom: 15px;
+  background: #222;
+  height: 35px;
+  color: #5b5;
+}
+
+.Help-button{
+  cursor: pointer;
+  font-size: 100%;
+  border-radius:2px;
+  box-shadow: 1px 1px 2px #666;
+  border:1px solid #aaa;
+  margin-left: 10px;
+  background: #222;
+  height: 30px;
+  color: #5b5;
+  position: fixed;
+  bottom: 2%;
+}
+
+.Search-input{
+  border-radius:4px;
+  box-shadow: 1px 1px 2px #333;
+  background-color: #555;
+  border:1px solid #000;
+  font-size: 150%;
+  padding-left: 5px;
+  margin-bottom: 0.25%;
+  margin-top: 0.1%;
+  width:50%;
+  height:35px;
+  color:#7d7;
+}
+
+.Text-long{
+  white-space: wrap;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: wrap;
+}
