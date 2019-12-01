@@ -38,7 +38,7 @@ body,input,button {
   padding-bottom: 5px;
   padding-left: 0%;
   padding-right: 0%;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
 
 .Menu-button{
@@ -64,20 +64,6 @@ body,input,button {
   background: #222;
   height: 35px;
   color: #5b5;
-}
-
-.Help-button{
-  cursor: pointer;
-  font-size: 100%;
-  border-radius:2px;
-  box-shadow: 1px 1px 2px #666;
-  border:1px solid #aaa;
-  margin-left: 10px;
-  background: #222;
-  height: 30px;
-  color: #5b5;
-  position: fixed;
-  bottom: 2%;
 }
 
 .Search-input{

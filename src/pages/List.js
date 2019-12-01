@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+import api from '../services/api';
 import Search from './search/';
 
 class Main extends React.Component{
@@ -9,8 +9,8 @@ class Main extends React.Component{
     methodsUser = {
         search: async (nickname) => {
             if(nickname){
-                return axios
-                .get('https://apilman.herokuapp.com/users', { headers: {'login': nickname} })
+                return api
+                .get('/users', { headers: {'login': nickname} })
                 .then(
                     (response) => (response.data),
                     () => ({login: "invalid github"})

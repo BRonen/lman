@@ -3,8 +3,13 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 import Add from './pages/Add';
 import List from './pages/List';
+import Delete from './pages/Delete';
+import Update from './pages/Update';
+
 import Home from './pages/Home';
 import Main from './pages/Main';
+
+
 
 function Easter(){
 	return(
@@ -22,7 +27,9 @@ export default function Routes(){
 				<Route path="/easter" exact component={Easter}/>
 				<Route path="/list" exact component={List}/>
 				<Route path="/add" exact component={Add}/>
-				<Route path="/" exact component={Home}/>
+				<Route path="/delete" exact component={Delete}/>
+				<Route path="/update" exact component={Update}/>
+				<Route path="/" component={Home}/>
 			</Switch>
 		</BrowserRouter>
 	);

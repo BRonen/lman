@@ -10,12 +10,15 @@ class Main extends React.Component{
     };
     
     methods = {
-        register: async ({nick, name, password}) => {
+        register: async (state) => {
+            console.log(state);
+            const {nick, name, password} = state;
             if(nick){
                 return api
-                 .post('/users',{
-			"name": name,
-			"password": password
+                 .put('/users', {
+                 	'login': nick,
+			'name': name,
+			'password': password
 		}, { headers: {'login': nick} })
                  .then(
                     () => ("done"),
@@ -67,7 +70,7 @@ class Main extends React.Component{
             });
         }
     };
-    
+
     render(){
         return(
 			<div className="Content-box">
@@ -77,11 +80,11 @@ class Main extends React.Component{
                  onClick={this.methods.reload}> Add other </button>
 			</>) : (<>
 				<h1 style={{color: "#51bb57"}}>
-					Register
+					Update
 				</h1>
 
 				<input type="text" className="Search-input"
-				 placeholder="Login" size="75"
+				 placeholder="Your login" size="75"
 				 onChange={this.methods.loginChangeHandle}
 				 onKeyPress={this.methods.keyPressed}/> <br />
 				 

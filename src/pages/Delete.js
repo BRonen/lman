@@ -3,40 +3,32 @@ import api from '../services/api';
 
 class Main extends React.Component{
     state = {
-        nick: '',
-        name: '',
-        password: '',
+    	nick: '',
         doing: false
     };
     
     methods = {
-        register: async ({nick, name, password}) => {
-            if(nick){
+        register: async (login) => {
+            if(login){
                 return api
-                 .post('/users',{
-			"name": name,
-			"password": password
-		}, { headers: {'login': nick} })
-                 .then(
+                 .delete('/users', {headers: { "login": login }})
+                  .then(
                     () => ("done"),
                     () => ("fail")
-                );
+                 );
             }else{
-                return ({});
+            	console.log('a');
             }
         },
         
         reload: () => {
             this.setState({
-                nick: '',
-                name: '',
-                password: '',
                 doing: false
             });
         },
 
         registerHandler: () => {
-            this.methods.register(this.state)
+            this.methods.register(this.state.nick)
              .then((response) => {
 		this.setState({doing: response});
                 console.log(response);
@@ -53,21 +45,9 @@ class Main extends React.Component{
             this.setState({
                 nick: event.target.value
             });
-        },
-
-        nameChangeHandle: (event) => {
-            this.setState({
-                name: event.target.value
-            });
-        },
-
-        passwordChangeHandle: (event) => {
-            this.setState({
-                password: event.target.value
-            });
         }
-    };
-    
+    }
+       
     render(){
         return(
 			<div className="Content-box">
@@ -77,22 +57,12 @@ class Main extends React.Component{
                  onClick={this.methods.reload}> Add other </button>
 			</>) : (<>
 				<h1 style={{color: "#51bb57"}}>
-					Register
+					Delete
 				</h1>
 
 				<input type="text" className="Search-input"
 				 placeholder="Login" size="75"
 				 onChange={this.methods.loginChangeHandle}
-				 onKeyPress={this.methods.keyPressed}/> <br />
-				 
-				<input type="text" className="Search-input"
-				 placeholder="Name" size="75"
-				 onChange={this.methods.nameChangeHandle}
-				 onKeyPress={this.methods.keyPressed}/> <br />
-				 
-				<input type="text" className="Search-input"
-				 placeholder="Password" size="75"
-				 onChange={this.methods.passwordChangeHandle}
 				 onKeyPress={this.methods.keyPressed}/> <br />
 
 				<button className="Big-button"
@@ -105,3 +75,5 @@ class Main extends React.Component{
 }
 
 export default Main;
+
+    
