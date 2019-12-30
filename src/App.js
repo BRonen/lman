@@ -4,20 +4,19 @@ import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 import Login from './pages/Login';
 import Register from './pages/Register';
 
+import Home from './pages/Home';
+
 import './App.css';
 
-function PrivateRoute ({...props}){
-  
-	return (
-		<Route {...props} component={() => (
-			props.token ? ( <>
-        <h1>hello world</h1>
-      </>) : (
-				<Redirect to={{pathname: '/login', state: {from: props.location} }}/>
-			)
-		)} />
-	);
-}
+const PrivateRoute = ({...props}) => (
+  <Route {...props} component={() => (
+    props.token ? ( <>
+      <Home token={props.token} />
+    </>) : (
+      <Redirect to={{pathname: '/login', state: {from: props.location} }}/>
+    )
+  )} />
+);
 
 export default function App(){
   const [token, setToken] = useState('');

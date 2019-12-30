@@ -5,7 +5,7 @@ import api from '../services/api';
 function Login(props) {
 	const [login, setLogin] = useState('');
 	const [pass, setPass] = useState('');
-	
+
 	function logger (login, password){
 		api.post('/auth',{
 			'login': login, 'password': password
@@ -13,7 +13,7 @@ function Login(props) {
 			props.setToken(data.data.token);
 		});
 	};
-	
+
 	return (
 		<div className="Content-box">
 			{props.token? (
