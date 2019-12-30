@@ -10,7 +10,7 @@ class Main extends React.Component{
     };
     
     methods = {
-        register: async ({nick, name, password}) => {
+        register: ({nick, name, password}) => {
             if(nick){
                 return api
                  .post('/users',{
