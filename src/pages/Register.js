@@ -6,10 +6,10 @@ function Register(props) {
 	const [login, setLogin] = useState('');
 	const [pass, setPass] = useState('');
 	
-	function register (login, password){
+	function register (){
 		api.post('/',{
-			'login': login, 'password': password
-		}).then((data) => {
+			'login': login, 'password': pass
+		}).then(data => {
 			props.setToken(data.data.token);
 		});
 	};
@@ -23,9 +23,9 @@ function Register(props) {
 				 e => setLogin(e.target.value)}/>
 				<input type="text" placeholder="Password:" onChange={
 				 e => setPass(e.target.value)}/>
-				<button className="Big-button" onClick={
-						() => register(login, pass)
-				}>enter</button>
+				<button className="Big-button" onClick={register}>
+					enter
+        </button>
 				<Link to="/login">
 					<button className="Big-button">login</button>
 				</Link>
