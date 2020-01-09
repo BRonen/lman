@@ -4,7 +4,6 @@ import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 import Login from './pages/Login';
 import Register from './pages/Register';
 
-import Header from './pages/Header'
 import Home from './pages/Home';
 
 import './App.css';
@@ -12,7 +11,6 @@ import './App.css';
 const PrivateRoute = ({...props}) => (
   <Route {...props} component={() => (
     props.token ? ( <>
-      <Header />
       <Home token={props.token} />
     </>) : (
       <Redirect to={{pathname: '/login', state: {from: props.location} }}/>

@@ -37,7 +37,7 @@ body,input,button {
   display: grid;
   padding-bottom: 5px;
   box-sizing: border-box;
-  grid-template-columns: 1fr;
+  grid-template-columns: 5fr 1fr;
 }
 
 .Menu-button{
@@ -47,7 +47,7 @@ body,input,button {
   box-shadow: 1px 1px 2px #666;
   border:1px solid #aaa;
   background: #222;
-  height: 35px;
+  padding-bottom:5px;
   width: 95%;
   color: #5b5;
 }
