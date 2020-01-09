@@ -9,7 +9,7 @@ function Login(props) {
 
 	function logger (){
 		api.post('/auth',{
-			'login': 'admin', 'password': 'admin'
+			'login': login, 'password': pass
 		}).then(({data}) => {
 			console.log(data);
 			props.setToken('Magic '+data.token);
@@ -17,8 +17,6 @@ function Login(props) {
 			setStatus(err.response.data);
 		});
 	};
-	
-	useEffect(logger, []);
 
 	return (
 		<div className="Content-box">
