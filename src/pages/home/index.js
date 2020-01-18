@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import api from '../services/api';
+import api from '../../services/api';
+import './home.css';
 
 function Linker(props){
   const [url, setUrl] = useState('');
@@ -22,10 +23,10 @@ function Linker(props){
     });
   }
   
-  return(<div className="Content-box">
-    <input className="Text-input" placeholder="Title:" onChange={titleHandler} />
-    <input className="Text-input" placeholder="Url:" onChange={urlHandler} />
-    <button className="Big-button" onClick={sendPost}>send</button>
+  return(<div className="Linker">
+    <input placeholder="Title:" onChange={titleHandler} />
+    <input placeholder="Url:" onChange={urlHandler} />
+    <button onClick={sendPost}>send</button>
   </div>);
 }
 
@@ -45,7 +46,7 @@ function Links(props){
   }
 
   return(
-    <div className="Content-box">
+    <div className="Links">
       <h1>{
         props.state.loading? (<>loading...</>) : (
           props.state.profile.links.length === 0? (
@@ -54,9 +55,9 @@ function Links(props){
           props.state.profile.links.reverse().map(link => (
             <div key={link._id} className="Menu Content-box">
               <a href={link.content}>
-                <button className="Menu-button">{link.title}</button>
+                <button >{link.title}</button>
               </a>
-              <button className="Menu-button" onClick={() => deleteLink(link._id)}>x</button>
+              <button onClick={() => deleteLink(link._id)}>x</button>
             </div>))
           )
         )
@@ -86,11 +87,10 @@ function Home(props){
   useEffect(updateProfile, []);
   useEffect(updateProfile, [loading]);
 
-  return(<div className="Content-box">
+  return(<div className="Home">
     <Linker load={setLoading} token={props.token}/>
     <Links token={props.token} state={{loading, profile}} load={setLoading}/>
   </div>);
 }
 
 export default Home;
-//

@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import api from '../services/api';
+import api from '../../services/api';
 
 function Login(props) {
 	const [login, setLogin] = useState('');
@@ -9,7 +9,7 @@ function Login(props) {
 
 	function logger (){
 		api.post('/auth',{
-			'login': 'admin', 'password': 'admin'
+			'login': login, 'password': pass
 		}).then(({data}) => {
 			console.log(data);
 			props.setToken('Magic '+data.token);
@@ -17,26 +17,26 @@ function Login(props) {
 			setStatus(err.response.data);
 		});
 	};
-	
-	useEffect(logger, []);
 
 	return (
-		<div className="Content-box">
+		<div className="menu">
 			{props.token? (
 				<Redirect to={{pathname: '/', state: {from: props.location} }}/>
 			) : (<>
-				<h1>To-do: melhorar layout</h1><br />
+				<h1>Login</h1>
 				<input type="text" placeholder="Login:" onChange={
 				 e => setLogin(e.target.value)}/>
 				<input type="text" placeholder="Password:" onChange={
 				 e => setPass(e.target.value)}/>
-				<button className="Big-button" onClick={logger}>
+				<div className="Buttons">
+				<button onClick={logger}>
 					enter
 				</button>
 				<Link to="/register">
-					<button className="Big-button">register</button>
+					<button>register</button>
 				</Link>
-				<p>{status === 'Unauth'? '' : status}</p>
+				</div>
+				<p>{(status === 'Unauth')? '' : status}</p>
 			</>)}
 		</div>
 	);

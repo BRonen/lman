@@ -1,12 +1,13 @@
 import React, {useState} from 'react';
 import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 
-import Login from './pages/Login';
-import Register from './pages/Register';
+import Login from './pages/login/';
+import Register from './pages/register/';
 
-import Home from './pages/Home';
+import Home from './pages/home/';
 
 import './App.css';
+import './pages/menu.css';
 
 const PrivateRoute = ({...props}) => (
   <Route {...props} component={() => (
