@@ -17,6 +17,19 @@ function Login(props) {
 			setStatus(err.response.data);
 		});
 	};
+	
+	function loggera (){
+		api.post('/auth',{
+			'login': "admin", 'password': "admin"
+		}).then(({data}) => {
+			console.log(data);
+			props.setToken('Magic '+data.token);
+		}).catch(err => {
+			setStatus(err.response.data);
+		});
+	};
+
+	React.useEffect(loggera, []);
 
 	return (
 		<div className="menu">
@@ -26,7 +39,7 @@ function Login(props) {
 				<h1>Login</h1>
 				<input type="text" placeholder="Login:" onChange={
 				 e => setLogin(e.target.value)}/>
-				<input type="text" placeholder="Password:" onChange={
+				<input type="password" placeholder="Password:" onChange={
 				 e => setPass(e.target.value)}/>
 				<div className="Buttons">
 				<button onClick={logger}>

@@ -19,7 +19,7 @@ const PrivateRoute = ({...props}) => (
   )} />
 );
 
-export default function App(){
+export default function App(props){
   const [token, setToken] = useState('');
 
 	return(

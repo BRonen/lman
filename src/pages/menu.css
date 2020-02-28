@@ -1,5 +1,5 @@
 .menu{
-  margin: 15%;
+  margin: 10%;
   margin-top: 5%;
   padding: 15px;
   text-align: center;
@@ -10,14 +10,6 @@
   border-radius: 30px;
 }
 
-.menu h1{
-  margin-left:40%;
-  margin-right:40%;
-  margin-bottom:10px;
-  border:1px solid #aaa;
-  border-radius:5px;
-}
-
 .menu p{
   margin-top: 10px;
   font-size: 20px;
@@ -26,11 +18,11 @@
 
 .menu .Buttons{
   display: grid;
+  gap: 10px;
 }
 
 @media(min-width:750px){
   .menu .Buttons{
-    gap: 10px;
     grid-template-columns: 1fr 1fr;
   }
 }

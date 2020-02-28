@@ -15,7 +15,7 @@ function Linker(props){
   }
   
   function sendPost(){
-    api.post('/posts', {title: title, content: url}, {
+    api.post('/posts', {title: title, content: 'http://'+url}, {
       headers: {authorization: props.token}
     }).then(links => {
       props.load(true);
@@ -26,7 +26,7 @@ function Linker(props){
   return(<div className="Linker">
     <input placeholder="Title:" onChange={titleHandler} />
     <input placeholder="Url:" onChange={urlHandler} />
-    <button onClick={sendPost}>send</button>
+    <button onClick={sendPost}>Send</button>
   </div>);
 }
 
@@ -34,7 +34,6 @@ function Linker(props){
 function Links(props){
 
   function deleteLink(ref){
-    console.log(props);
     api.delete('/posts', {
       data: {linkId: ref},
       headers: {authorization: props.token}
@@ -44,24 +43,37 @@ function Links(props){
       console.log({err});
     });
   }
+  
+  function LinkTemplate(props){
+    return(
+      <div key={props._id} className="Menu Content-box Grid">
+        <a href={props.content}>
+          <button>{props.title}</button>
+        </a>
+        <button onClick={()=>{deleteLink(props._id);}}>delete</button>
+      </div>
+    )
+  }
+  
+  function LinkList(props){
+    return(
+      props.state.profile.links.length === 0? (
+        <h1>none</h1>
+      ) : (
+        props.state.profile.links.reverse().map(link => (
+          <LinkTemplate {...link} />
+        ))
+      )
+    )
+  }
 
   return(
     <div className="Links">
-      <h1>{
+      {
         props.state.loading? (<>loading...</>) : (
-          props.state.profile.links.length === 0? (
-            <p>none</p>
-          ) : (
-          props.state.profile.links.reverse().map(link => (
-            <div key={link._id} className="Menu Content-box">
-              <a href={link.content}>
-                <button >{link.title}</button>
-              </a>
-              <button onClick={() => deleteLink(link._id)}>x</button>
-            </div>))
-          )
+          <LinkList {...props} />
         )
-      }</h1>
+      }
     </div>
   );
 };
@@ -87,10 +99,12 @@ function Home(props){
   useEffect(updateProfile, []);
   useEffect(updateProfile, [loading]);
 
-  return(<div className="Home">
-    <Linker load={setLoading} token={props.token}/>
-    <Links token={props.token} state={{loading, profile}} load={setLoading}/>
-  </div>);
+  return(<>
+    <div className="Home">
+      <Linker load={setLoading} token={props.token}/>
+      <Links token={props.token} state={{loading, profile}} load={setLoading}/>
+    </div>
+  </>);
 }
 
 export default Home;
