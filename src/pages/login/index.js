@@ -18,7 +18,7 @@ function Login(props) {
 		});
 	};
 	
-	function loggera (){
+	/*function loggera (){
 		api.post('/auth',{
 			'login': "admin", 'password': "admin"
 		}).then(({data}) => {
@@ -29,7 +29,7 @@ function Login(props) {
 		});
 	};
 
-	React.useEffect(loggera, []);
+	React.useEffect(loggera, []);*/
 
 	return (
 		<div className="menu">
